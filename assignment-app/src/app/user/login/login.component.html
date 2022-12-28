@@ -1,0 +1,13 @@
+<form (submit)="onSubmit(); assignmentForm.reset();" ngForm #assignmentForm class="form">
+    <div class="form-group">
+        <label for="email">Email : </label>
+        <input type="text" name="email" class="form-control" placeholder="Email" [(ngModel)]="email">
+    </div>
+    <div class="form-group">
+        <label for="password">Password : </label>
+        <input type="text" name="password" class="form-control" placeholder="Password" [(ngModel)]="password">
+    </div>
+    <div class="text-center">
+        <input type="submit" class="btn btn-my" value="Sign Up" (click)="login()">
+    </div>
+</form>

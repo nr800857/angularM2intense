@@ -24,6 +24,9 @@ import { RouterModule } from '@angular/router';
 import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assignment.component';
 import { AuthGuard } from './shared/auth.guard';
 import { HttpClientModule } from '@angular/common/http';
+import { UserComponent } from './user/user.component';
+import { AddUserComponent } from './user/add-user/add-user.component';
+import { LoginComponent } from './user/login/login.component';
 
 const routes: Routes = [
   {
@@ -46,6 +49,16 @@ const routes: Routes = [
     path: 'assignment/:id/edit',
     component: EditAssignmentComponent,
     canActivate:[AuthGuard]
+  },
+  {
+    path: 'user',
+    component: UserComponent
+  },{
+    path: 'user/add',
+    component: AddUserComponent
+  },{
+    path: 'user/login',
+    component: LoginComponent
   }
 ]
 
@@ -55,7 +68,10 @@ const routes: Routes = [
     AssignmentsComponent,
     AssignmentDetailComponent,
     AddAssignmentComponent,
-    EditAssignmentComponent
+    EditAssignmentComponent,
+    UserComponent,
+    AddUserComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

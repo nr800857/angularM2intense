@@ -1,3 +1,7 @@
+main, h2 {
+  margin: 2% 20%;
+}
+
 table, tr, td {
   border: 1px solid black;
   border-collapse: collapse;

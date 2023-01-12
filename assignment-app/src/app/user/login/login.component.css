@@ -1,0 +1,30 @@
+form {
+    width: 100%;
+    max-width: 330px;
+    padding: 30px;
+    margin: auto;
+    background-color: rgb(224, 224, 224);
+    border-radius: 10px;
+}
+
+form div {
+    margin: 20px;
+    text-align: center;
+}
+
+
+input[type="text"]{
+    float: right;
+}
+
+input[type="submit"]{
+    padding: 10px 40px;
+    margin-top: 20px;
+    border-radius: 15px;
+    border: 1px black solid;
+}
+
+input[type="submit"]:hover{
+    background-color: rgb(58, 107, 143);
+    color: white;
+}

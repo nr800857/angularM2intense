@@ -1,11 +1,11 @@
 <form (submit)="onSubmit(); assignmentForm.reset();" ngForm #assignmentForm class="form">
     <div class="form-group">
-        <label for="name">Name : </label>
-        <input type="text" name="name" class="form-control" placeholder="Name" [(ngModel)]="nom">
+        <label for="name">Nom: </label>
+        <input type="text" name="name" class="form-control" placeholder="Nom" [(ngModel)]="nom">
     </div>
     <div class="form-group">
-        <label for="phone">Phone : </label>
-        <input type="text" name="phone" class="form-control" placeholder="Phone" [(ngModel)]="prenom">
+        <label for="phone">Prénom : </label>
+        <input type="text" name="phone" class="form-control" placeholder="Prénom" [(ngModel)]="prenom">
     </div>
     <div class="form-group">
         <label for="email">Email : </label>
@@ -16,6 +16,6 @@
         <input type="text" name="password" class="form-control" placeholder="Password" [(ngModel)]="password">
     </div>
     <div class="text-center">
-        <input type="submit" class="btn btn-my" value="Sign Up" (click)="login()">
+        <input  type="submit" class="btn btn-my" value="Sign Up" (click)="login()">
     </div>
 </form>

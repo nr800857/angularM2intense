@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/shared/user.service';
 import { User } from '../user.model';
+import { Router } from '@angular/router';
 import { LoggingService } from 'src/app/shared/logging.service';
 import { AuthService } from 'src/app/shared/auth.service';
 
@@ -12,31 +13,32 @@ import { AuthService } from 'src/app/shared/auth.service';
 })
 export class AddUserComponent implements OnInit {
 
-  nom=""
-prenom=""
-email=""
-password=""
-  constructor(private userService:UserService, private router:ActivatedRoute, private AuthService:AuthService) { }
+  nom = ""
+  prenom = ""
+  email = ""
+  password = ""
+  constructor(private userService: UserService, private router: ActivatedRoute, private AuthService: AuthService, private route:Router) { }
 
   ngOnInit(): void {
   }
 
-  onSubmit(){
+  onSubmit() {
     console.log("onSubmit : " + this.nom + " " + this.prenom + " " + this.email + " " + this.password);
     let newUser = new User();
     newUser.nom = this.nom;
     newUser.prenom = this.prenom;
     newUser.email = this.email;
     newUser.password = this.password;
-    newUser.id = Math.floor(Math.random()*100000000000000000);
+    newUser.id = Math.floor(Math.random() * 100000000000000000);
     this.userService.addUser(newUser)
-    .subscribe((reponse) => {
-      console.log(reponse.message);
-    });
+      .subscribe((reponse) => {
+        console.log(reponse.message);
+      });
+      this.route.navigate(['/home']);
   }
 
   login() {
-    if(!this.AuthService.loggedIn) {
+    if (!this.AuthService.loggedIn) {
       this.AuthService.logIn();
       console.log("login");
     } else {

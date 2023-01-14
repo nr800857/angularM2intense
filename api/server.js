@@ -2,6 +2,8 @@ let express = require('express');
 let app = express();
 let bodyParser = require('body-parser');
 let assignment = require('./routes/assignments');
+let user = require('./routes/users');
+
 
 let mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
@@ -9,7 +11,6 @@ mongoose.Promise = global.Promise;
 
 // remplacer toute cette chaine par l'URI de connexion à votre propre base dans le cloud s
 const uri = 'mongodb+srv://pburel:QW6XdjykHaE6DVJS@cluster0.qkotzgw.mongodb.net/assignments?retryWrites=true&w=majority';
-
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -21,10 +22,11 @@ mongoose.connect(uri, options)
     console.log("Connecté à la base MongoDB assignments dans le cloud !");
     console.log("at URI = " + uri);
     console.log("vérifiez with http://localhost:8010/api/assignments que cela fonctionne")
+    console.log("vérifiez with http://localhost:8010/api/users que cela fonctionne")
     },
     err => {
       console.log('Erreur de connexion: ', err);
-    });
+});
 
 // Pour accepter les connexions cross-domain (CORS)
 app.use(function (req, res, next) {
@@ -54,6 +56,15 @@ app.route(prefix + '/assignments/:id')
 app.route(prefix + '/assignments')
   .post(assignment.postAssignment)
   .put(assignment.updateAssignment);
+
+app.route(prefix + '/users')
+  .get(user.getUsers);
+
+app.route(prefix + '/users/:id')
+  .get(user.getUser)
+
+app.route(prefix + '/users')
+  .post(user.postUser)
 
 // On démarre le serveur
 app.listen(port, "0.0.0.0");

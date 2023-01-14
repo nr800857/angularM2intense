@@ -14,19 +14,31 @@ export class AssignmentsService {
       id: 1,
       nom: 'Devoir Angular de Mr Buffa',
       dateDeRendu: new Date('2022-11-30'),
-      rendu: false
+      rendu: false,
+      matiere : "Angular",
+      note : 20,
+      remarques : "Rendre le projet",
+      auteur : "BUREL"
     },
     {
       id: 2,
       nom: 'Devoir WebComponents de Mr Buffa',
       dateDeRendu: new Date('2022-09-30'),
-      rendu: false
+      rendu: false,
+      matiere : "Angular",
+      note : 20,
+      remarques : "Rendre le projet",
+      auteur : "BUREL"
     },
     {
       id: 3,
       nom: 'Devoir BD de Mr Mopolo',
       dateDeRendu: new Date('2022-09-30'),
-      rendu: true
+      rendu: true,
+      matiere : "Angular",
+      note : 20,
+      remarques : "Rendre le projet",
+      auteur : "BUREL"
     }
   ]
   constructor(private loggingService: LoggingService,

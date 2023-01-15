@@ -31,6 +31,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './user/user.component';
 import { AddUserComponent } from './user/add-user/add-user.component';
 import { LoginComponent } from './user/login/login.component';
+import { FilterPipe } from './shared/assignments.filter';
+
+
 
 const routes: Routes = [
   {
@@ -76,6 +79,7 @@ const routes: Routes = [
     UserComponent,
     AddUserComponent,
     LoginComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -88,7 +92,7 @@ const routes: Routes = [
     HttpClientModule,
     MatPaginatorModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

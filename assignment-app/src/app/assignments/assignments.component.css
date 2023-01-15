@@ -18,3 +18,8 @@ table, tr, td {
 a {
   text-decoration: none;
 }
+
+#outils {
+  display: flex;
+  justify-content: space-between;
+}

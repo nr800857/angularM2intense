@@ -1,14 +1,16 @@
 <h2>{{titre}}</h2>
 
 <main>
-  <a routerLink="/add">
-    <button mat-flat-button color="accent"
-    >
-          Ajouter Assignment
-    </button>
-</a>
+  <div id="outils">
+    <a routerLink="/add">
+      <button mat-flat-button color="accent">Ajouter Assignment</button>
+    </a>
+    <span>
+      <input [(ngModel)]="searchTerm" placeholder="Rechercher..." style="margin-right: 10px;">
+      <mat-checkbox (change)="filterData($event.checked)">Rendu</mat-checkbox>
+    </span>
 
-<input [(ngModel)]="searchTerm" placeholder="Rechercher...">
+  </div>
 
 <mat-paginator #paginator [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="false" [length]="totalSize"
     [pageIndex]="currentPage" (page)="handlePage($event)">

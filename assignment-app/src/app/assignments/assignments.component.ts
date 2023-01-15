@@ -13,13 +13,16 @@ import { MatTableDataSource } from '@angular/material/table';
 export class AssignmentsComponent implements OnInit {
   titre="Liste des devoirs";
   assignmentSelectionne!:Assignment;
-  searchTerm: string | undefined;
+  searchTerm: string = '';
   public dataSource: any; 
 
   assignments:Assignment[] = [];
+  assignmentsCopy: Assignment[] = [];
   public pageSize = 10;
   public currentPage = 0;
   public totalSize = 0;
+
+  filterValues: any = {};
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -30,7 +33,8 @@ export class AssignmentsComponent implements OnInit {
     this.assignmentsService.getAssignments()
     .subscribe(assignments => {
       this.assignments = assignments
-      this.dataSource = new MatTableDataSource<Assignment>(assignments);
+      this.assignmentsCopy = assignments;
+      this.dataSource = new MatTableDataSource<Assignment>(this.assignments);
       this.dataSource.paginator = this.paginator;
       this.totalSize = this.assignments.length;
       this.iterator();
@@ -55,20 +59,22 @@ export class AssignmentsComponent implements OnInit {
     console.log("assignmentClique : " + assignment.nom);
     this.assignmentSelectionne = assignment;
   }
-  
-}
 
-@Pipe({
-  name: 'filter'
-})
-export class FilterPipe implements PipeTransform {
+  filterData(isRenduChecked: boolean) {
+    if(isRenduChecked == false) {
+      this.assignments = this.assignmentsCopy; 
+      this.dataSource = new MatTableDataSource<Assignment>(this.assignments);
+      this.dataSource.paginator = this.paginator;
+      this.totalSize = this.assignments.length;
+      this.iterator();
+    }
+    else {
+      this.assignments = this.assignments.filter(s => s.rendu == true); 
+      this.dataSource = new MatTableDataSource<Assignment>(this.assignments);
+      this.dataSource.paginator = this.paginator;
+      this.totalSize = this.assignments.length;
+      this.iterator();
+    }
 
-  transform(items: any[], searchTerm: string): any[] {
-    if(!items) return [];
-    if(!searchTerm) return items;
-    searchTerm = searchTerm.toLowerCase();
-    return items.filter( it => {
-      return it.toLowerCase().includes(searchTerm);
-    });
-   }
+  }
 }

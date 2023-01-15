@@ -13,6 +13,7 @@ export class AddAssignmentComponent implements OnInit {
   // Pour le formulaire
   nomDevoir = "";
   dateDeRendu!: Date;
+  matiere = "";
   constructor(private assignmentsService: AssignmentsService,
     private router: ActivatedRoute) { }
 
@@ -28,6 +29,7 @@ export class AddAssignmentComponent implements OnInit {
     nouvelAssignment.nom = this.nomDevoir;
     nouvelAssignment.dateDeRendu = this.dateDeRendu;
     nouvelAssignment.rendu = false;
+    nouvelAssignment.matiere = this.matiere;
     nouvelAssignment.id = Math.floor(Math.random() * 100000000000000000);
     // le tableau est chez le papa comment faire ?
     //this.assignments.push(nouvelAssignment);

@@ -16,6 +16,14 @@
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
+  <mat-form-field appearance="fill">
+    <mat-label>Matières</mat-label>
+    <mat-select [(ngModel)]="matiere">
+      <mat-option value="option1">Web</mat-option>
+      <mat-option value="option2">Maths</mat-option>
+      <mat-option value="option3">IA</mat-option>
+    </mat-select>
+  </mat-form-field>
 
   <button mat-stroked-button
            color="primary">

@@ -16,6 +16,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
 
 
 import { AppComponent } from './app.component';
@@ -93,6 +94,7 @@ const routes: Routes = [
     MatPaginatorModule,
     MatTableModule,
     MatDialogModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

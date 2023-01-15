@@ -18,9 +18,9 @@ Rémy
 
 Pour exécuter :
 Dans le dossier api executer 
-  npm i
-  node server.js
+  "npm i"
+  "node server.js"
 
 Dans le dossier assignment-app
-  npm i
-  ng serve 
+  "npm i"
+  "ng serve" 

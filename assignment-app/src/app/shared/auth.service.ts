@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
   loggedIn = false;
-
+  username = '';
   // Dans la vraie vie (dans le projet à faire), on
   // passerait login et password.
   logIn() {

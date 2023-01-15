@@ -3,3 +3,16 @@
   align-items: flex-end;
   justify-content: space-between;
 }
+
+mat-card {
+  margin: 2% 20%;
+  padding: 3%;
+  background-color: rgb(245, 245, 245);
+  box-shadow: 0px 0px 10px rgb(128, 128, 128)!important;
+}
+
+#entete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

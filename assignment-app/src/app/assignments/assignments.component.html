@@ -8,19 +8,22 @@
     </button>
 </a>
 
+<input [(ngModel)]="searchTerm" placeholder="Rechercher...">
+
 <mat-paginator #paginator [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="false" [length]="totalSize"
     [pageIndex]="currentPage" (page)="handlePage($event)">
 </mat-paginator>
 
-  <mat-list *ngFor="let a of dataSource">
+  <mat-list *ngFor="let a of dataSource | filter:searchTerm">
     <nav>
     <a routerLink="/assignment/{{a.id}}">
       <mat-list-item>
-        <h3 mat-line>{{a.nom}}</h3>
+        <h3 mat-line style="font-size: 1.5em;">{{a.nom}}</h3>
         <p mat-line>{{a.dateDeRendu | date}}</p>
+        <p mat-line>{{a.matiere}}</p>
         <mat-icon mat-list-icon *ngIf="a.rendu">done</mat-icon>
       </mat-list-item>
-    <h3 mat-subheader>{{a.dateDeRendu | date}}</h3>
+    <h3 mat-subheader>Date de rendu : {{a.dateDeRendu | date}}</h3>
     <mat-list-item [ngClass]="{'rendu':a.rendu, 'nonRendu':!a.rendu}"
                    (click)="assignmentClique(a)"
     >
@@ -38,4 +41,5 @@
     </a>
     </nav>
   </mat-list>
+
 </main>

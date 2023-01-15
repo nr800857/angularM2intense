@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
     console.log("onSubmit : " + this.email + " " + this.password);
-    this.userService.getUserByEmail(this.email);
+    this.userService.getUserByEmail(this.email)
   }
 
   login() {

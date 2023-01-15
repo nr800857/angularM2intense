@@ -1,5 +1,5 @@
 import { DataSource } from '@angular/cdk/collections';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform, ViewChild } from '@angular/core';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import { AssignmentsService } from '../shared/assignments.service';
 import { Assignment } from './assignment.model';
@@ -13,6 +13,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class AssignmentsComponent implements OnInit {
   titre="Liste des devoirs";
   assignmentSelectionne!:Assignment;
+  searchTerm: string | undefined;
   public dataSource: any; 
 
   assignments:Assignment[] = [];
@@ -23,7 +24,7 @@ export class AssignmentsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private assignmentsService:AssignmentsService) { }
-
+  
    ngOnInit(): void {
     console.log("appelé à l'initialisation du composant");
     this.assignmentsService.getAssignments()
@@ -54,6 +55,20 @@ export class AssignmentsComponent implements OnInit {
     console.log("assignmentClique : " + assignment.nom);
     this.assignmentSelectionne = assignment;
   }
-
   
+}
+
+@Pipe({
+  name: 'filter'
+})
+export class FilterPipe implements PipeTransform {
+
+  transform(items: any[], searchTerm: string): any[] {
+    if(!items) return [];
+    if(!searchTerm) return items;
+    searchTerm = searchTerm.toLowerCase();
+    return items.filter( it => {
+      return it.toLowerCase().includes(searchTerm);
+    });
+   }
 }

@@ -56,4 +56,6 @@ export class AssignmentDetailComponent implements OnInit {
         this.router.navigate(["/home"]);
       });
   }
+
+  
 }

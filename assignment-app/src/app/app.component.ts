@@ -9,7 +9,7 @@ import { AuthService } from './shared/auth.service';
 export class AppComponent {
   title = 'Gestion des devoirs';
 
-  constructor(private authService:AuthService) {}
+  constructor(public authService:AuthService) {}
 
   login() {
     if(!this.authService.loggedIn) {

@@ -3,3 +3,18 @@
   flex-direction: column;
   margin:5px;
 }
+
+.container {
+  margin: 2% 20%;
+}
+
+mat-form-field {
+  padding: 1%;
+  width:60%;
+  margin: auto;
+}
+
+button {
+  width: 30%;
+  margin: auto;
+}

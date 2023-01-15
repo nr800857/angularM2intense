@@ -1,7 +1,14 @@
 <nav>
   <a routerLink="/home" class="title">{{title}}</a>
-  <a routerLink="/user/add" >Sign Up</a>
-  <a routerLink="/user/login">Sign In</a>
+  <span *ngIf="!this.authService.loggedIn">
+    <a routerLink="/user/add" >S'inscrire</a>
+    <a routerLink="/user/login">Se connecter</a>
+  </span>
+  
+  <span *ngIf="this.authService.loggedIn">
+    <a routerLink="/home" (click)="this.authService.logOut()">Se déconnecter</a>
+  </span>
+
 </nav>
 <!--
   Affiche le composant qui correspond à la route
